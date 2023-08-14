@@ -1,3 +1,5 @@
-FROM openjdk:8
-ADD jarstaging/com/valaxy/demo-workshop/2.1.2/demo-workshop-2.1.2.jar ttrend.jar 
-ENTRYPOINT ["java", "-jar", "ttrend.jar"]
+FROM ubuntu:latest
+RUN apt update -y
+RUN apt install -y apache2
+COPY index.html /var/www/html
+CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
